@@ -1,0 +1,17 @@
+.ListItem{
+  width: 70%;
+  padding: 5px 0;
+}
+.listItem_inner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid silver;
+  background-color: beige;
+}
+.name{
+  color: rgb(151, 151, 137);
+  font-weight: 500;
+  font-size: 15px;
+}
