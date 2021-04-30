@@ -1,12 +1,21 @@
-import React from 'react';
-import Button from '../../../baseComponent/Button/Button';
 import './Header.css';
+import Button from '../../../baseComponent/Button/Button';
+import { getDataPeople, getDataStarships, getDataPlanets } from '../../../state/actions/actions';
+import { connect } from 'react-redux';
+import swapi from '../../../Service';
 
-const Header = ({ getPeople, getPlanets, getStarship }) => (
+const Header = props => (
   <div className='Header'>
-    <Button title='People' getData={getPeople} />
-    <Button title='Planets' getData={getPlanets} />
-    <Button title='Starship' getData={getStarship} />
+    <Button title='People' getData={props.onGetPeople} />
+    <Button title='Planets' getData={props.onGetPlanets} />
+    <Button title='Starship' getData={props.onGetStarships} />
   </div>
 );
-export default Header;
+
+const mapDispatchToProps = dispatch => ({
+  onGetPeople: () => dispatch(getDataPeople(swapi)()),
+  onGetPlanets: () => dispatch(getDataPlanets(swapi)()),
+  onGetStarships: () => dispatch(getDataStarships(swapi)())
+});
+
+export default connect(null, mapDispatchToProps)(Header);

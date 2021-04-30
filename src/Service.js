@@ -1,4 +1,4 @@
-/* eslint no-console: "error" */
+/* eslint no-console: 0 */
 class Swapi {
   #baseURL ='https://swapi.dev/api/';
 
@@ -28,7 +28,7 @@ class Swapi {
       }
     }
 
-    getStarship = async() => {
+    getStarships = async() => {
       try {
         const response = await fetch(`${this.#baseURL}starships/`);
 
@@ -42,4 +42,6 @@ class Swapi {
     }
 }
 
-export default new Swapi();
+const swapi = new Swapi();
+
+export default swapi;

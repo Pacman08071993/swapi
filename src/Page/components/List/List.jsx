@@ -1,13 +1,17 @@
-/* eslint no-console: 0 */
-import React from 'react';
 import './List.css';
+import { connect } from 'react-redux';
 import ListItem from './ListItem/ListItem';
 
-const List = ({ data, showMore }) => (
-  <div className='List'>{data === null
-    ? null
-    : data.map((item, index) => <ListItem name={item.name} showMore={showMore} key={index}/>) }</div>
+const List = props => (
+  <div className='List'>
+    {props.data.length > 0
+      ? props.data.map((item, index) => <ListItem name={item.name} key={index} />)
+      : null
+    }
+  </div>
 );
 
+const mapStateToProps = state => ({ data: state.data });
 
-export default List;
+
+export default connect(mapStateToProps, null)(List);
